@@ -3,6 +3,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { Auth, signInWithEmailAndPassword } from '@angular/fire/auth';
 import { LoadingController } from '@ionic/angular';
 import { UtilsService } from 'src/app/services/utils.service';
+import { Router } from '@angular/router'; // ✅ Importar Router
 
 @Component({
   selector: 'app-auth',
@@ -19,7 +20,8 @@ export class AuthPage implements OnInit {
   constructor(
     private auth: Auth,
     private loadingCtrl: LoadingController,
-    private utilsSvc: UtilsService
+    private utilsSvc: UtilsService,
+    private router: Router // ✅ Inyectar Router
   ) {}
 
   ngOnInit() {}
@@ -34,10 +36,13 @@ export class AuthPage implements OnInit {
       try {
         const userCredential = await signInWithEmailAndPassword(this.auth, email, password);
         console.log('Usuario autenticado:', userCredential.user);
-        await this.utilsSvc.presentToast('Inicio de sesión exitoso', 'success'); // ✅ Corrección aquí
+        await this.utilsSvc.presentToast('Inicio de sesión exitoso', 'success');
+
+        // ✅ Redirigir al usuario a la página Home
+        this.router.navigate(['/main/home']);
       } catch (error) {
         console.error('Error en la autenticación:', error.message);
-        await this.utilsSvc.presentToast('Correo o contraseña incorrectos', 'danger'); // ✅ Corrección aquí
+        await this.utilsSvc.presentToast('Correo o contraseña incorrectos', 'danger');
       } finally {
         await loading.dismiss();
       }
