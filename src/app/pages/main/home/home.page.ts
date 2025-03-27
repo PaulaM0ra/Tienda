@@ -15,11 +15,23 @@ export class HomePage {
     {
       name: 'Portátiles',
       image: 'assets/laptop.png',
-      path: 'products/laptops',
+      path: 'main/home/products/laptops',
     },
-    { name: 'Celulares', image: 'assets/phone.png', path: 'products/phones' },
-    { name: 'Tabletas', image: 'assets/tablet.png', path: 'products/tablets' },
-    { name: 'Relojes', image: 'assets/watch.png', path: 'products/watches' },
+    {
+      name: 'Celulares',
+      image: 'assets/phone.png',
+      path: 'main/home/products/phones',
+    },
+    {
+      name: 'Tabletas',
+      image: 'assets/tablet.png',
+      path: 'main/home/products/tablets',
+    },
+    {
+      name: 'Relojes',
+      image: 'assets/watch.png',
+      path: 'main/home/products/watches',
+    },
   ];
 
   constructor(private router: Router, private cartService: CartService) {}
