@@ -12,7 +12,8 @@ import { AlertController } from '@ionic/angular';
 export class CartPage implements OnInit {
   cartItems: any[] = [];
 
-  constructor(private cartService: CartService,
+  constructor(
+    private cartService: CartService,
     private router: Router,
     private alertController: AlertController
   ) {}
@@ -39,14 +40,16 @@ export class CartPage implements OnInit {
   }
   async checkout() {
     if (this.cartItems.length === 0) {
-      this.presentAlert('Carrito vacío', 'Agrega productos antes de finalizar la compra.');
+      this.presentAlert(
+        'Carrito vacío',
+        'Agrega productos antes de finalizar la compra.'
+      );
       return;
     }
 
-
     this.presentAlert('Compra exitosa', 'Gracias por tu compra.').then(() => {
-      this.clearCart(); 
-      this.router.navigate(['/main/home']); 
+      this.clearCart();
+      this.router.navigate(['/main/home']);
     });
   }
 

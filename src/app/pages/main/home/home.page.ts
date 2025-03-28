@@ -15,7 +15,7 @@ export class HomePage implements OnInit, OnDestroy {
     'assets/images/banner2.png',
     'assets/images/banner3.png',
   ];
-  bannerImage: string = this.bannerImages[0]; 
+  bannerImage: string = this.bannerImages[0];
   private bannerInterval: any;
 
   categories = [
@@ -44,11 +44,9 @@ export class HomePage implements OnInit, OnDestroy {
   constructor(private router: Router, private cartService: CartService) {}
 
   ngOnInit() {
-   
     this.cartService.getCartItemCount().subscribe((count) => {
       this.cartItemCount = count;
     });
-
 
     this.startBannerRotation();
   }
@@ -64,7 +62,7 @@ export class HomePage implements OnInit, OnDestroy {
     this.bannerInterval = setInterval(() => {
       index = (index + 1) % this.bannerImages.length;
       this.bannerImage = this.bannerImages[index];
-    }, 5000); 
+    }, 5000);
   }
 
   navigateToCategory(path: string) {
