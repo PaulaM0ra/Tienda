@@ -6,17 +6,19 @@
       </ion-button>
     </ion-buttons>
     <ion-title>{{ category | titlecase }}</ion-title>
+
     <ion-buttons slot="end">
       <ion-button routerLink="/main/cart">
         <ion-icon name="cart"></ion-icon>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
+  <ion-searchbar (ionInput)="filterProducts($event)"></ion-searchbar>
 </ion-header>
 
 <ion-content>
   <ion-list>
-    <ion-item *ngFor="let product of products$ | async">
+    <ion-item *ngFor="let product of filteredProducts$ | async">
       <ion-thumbnail slot="start">
         <img [src]="product.image" alt="{{ product.name }}" />
       </ion-thumbnail>

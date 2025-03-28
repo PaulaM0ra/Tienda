@@ -1,6 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Observable, of, switchMap } from 'rxjs';
+import {
+  Observable,
+  of,
+  switchMap,
+  BehaviorSubject,
+  combineLatest,
+} from 'rxjs';
+import { map } from 'rxjs/operators';
 import { CartService } from 'src/app/services/cart.service';
 import { FirebaseService } from 'src/app/services/firebase.service';
 import { ProductsI } from 'src/app/services/models/products.models';
@@ -14,14 +21,16 @@ import { ProductsI } from 'src/app/services/models/products.models';
 export class ProductsPage implements OnInit {
   category: string | null = null;
   products$: Observable<ProductsI[]> = of([]);
-
-  filteredProducts = [];
+  filteredProducts$: Observable<ProductsI[]> = of([]);
+  private searchTerm = new BehaviorSubject<string>('');
 
   constructor(
     private firebaseService: FirebaseService,
     private route: ActivatedRoute,
     private cartService: CartService
-  ) {
+  ) {}
+
+  ngOnInit() {
     this.loadProducts();
   }
 
@@ -39,11 +48,24 @@ export class ProductsPage implements OnInit {
           : this.firebaseService.getCollectionChanges<ProductsI>('products');
       })
     );
+
+    this.filteredProducts$ = combineLatest([
+      this.products$,
+      this.searchTerm,
+    ]).pipe(
+      map(([products, term]) =>
+        products.filter((product) =>
+          product.name.toLowerCase().includes(term.toLowerCase())
+        )
+      )
+    );
   }
 
-  ngOnInit() {}
+  filterProducts(event: any) {
+    this.searchTerm.next(event.target.value);
+  }
 
-  addToCart(product: any) {
+  addToCart(product: ProductsI) {
     this.cartService.addToCart(product);
   }
 }
