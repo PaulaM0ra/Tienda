@@ -1,27 +1,29 @@
-<ion-header>
+<ion-header class="header">
   <ion-toolbar>
-    <ion-title>Tienda Online</ion-title>
+    <ion-title class="title">🛒 Tienda Online </ion-title>
     <ion-buttons slot="end">
-      <ion-button routerLink="/main/cart">
+      <ion-button class="cart-button" routerLink="/main/cart">
         <ion-icon name="cart"></ion-icon>
-        <ion-badge color="danger">{{ cartItemCount }}</ion-badge>
+        <ion-badge class="cart-badge">{{ cartItemCount }}</ion-badge>
       </ion-button>
     </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content class="content">
+
   <div class="banner">
-    <img [src]="'assets/banner.png'" alt="Banner" />
+    <img [src]="bannerImage" alt="Banner" />
   </div>
 
+ 
   <ion-grid>
     <ion-row>
-      <ion-col size="6" *ngFor="let category of categories">
-        <ion-card (click)="navigateToCategory(category.path)">
-          <img [src]="category.image" alt="{{ category.name }}" />
+      <ion-col size="6" size-md="4" size-lg="3" *ngFor="let category of categories">
+        <ion-card class="category-card" (click)="navigateToCategory(category.path)">
+          <img [src]="category.image" alt="{{ category.name }}" class="category-img" />
           <ion-card-header>
-            <ion-card-title>{{ category.name }}</ion-card-title>
+            <ion-card-title class="category-title">{{ category.name }}</ion-card-title>
           </ion-card-header>
         </ion-card>
       </ion-col>

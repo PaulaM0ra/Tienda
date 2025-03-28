@@ -1,0 +1,106 @@
+ion-content {
+    --background: linear-gradient(to right, #1e3c72, #2a5298);
+    display: flex;
+    flex-direction: column;
+  }
+  
+  ion-toolbar {
+    --background: #003366;
+    --color: white;
+    font-weight: bold;
+    transition: background 0.3s ease-in-out;
+  }
+  
+  ion-button {
+    --color: white;
+    --border-radius: 12px;
+    transition: transform 0.3s ease-in-out, background 0.3s ease-in-out;
+  }
+  
+  ion-button:hover {
+    transform: scale(1.1);
+    --background: #005b99;
+  }
+  
+  ion-icon {
+    font-size: 22px;
+    color: white;
+  }
+  
+  ion-list {
+    background: transparent;
+    width: 95%;
+    margin: 0 auto;
+    padding-top: 10px;
+  }
+  
+  ion-item {
+    --background: white;
+    border-radius: 14px;
+    margin-bottom: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+  }
+  
+  ion-item:hover {
+    transform: scale(1.02);
+    box-shadow: 0px 6px 15px rgba(0, 122, 204, 0.6);
+  }
+  
+  ion-thumbnail {
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  ion-thumbnail img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  ion-thumbnail:hover {
+    transform: scale(1.05);
+  }
+  
+  ion-label h2 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #003366;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  ion-label p {
+    font-size: 16px;
+    color: #007acc;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  ion-item:hover ion-label h2 {
+    color: #005b99;
+  }
+  
+  ion-button {
+    --background: #007acc;
+    --color: white;
+    --box-shadow: 0px 4px 8px rgba(0, 122, 204, 0.5);
+    transition: background 0.3s ease-in-out, transform 0.3s ease-in-out;
+  }
+  
+  ion-button:hover {
+    --background: #005b99;
+    transform: scale(1.05);
+  }
+  ion-buttons ion-button {
+    --color: white;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  ion-buttons ion-button:hover {
+    transform: scale(1.1);
+    --color: #00aaff;
+  }
+  
+  ion-icon[name="arrow-back"] {
+    font-size: 22px;
+  }

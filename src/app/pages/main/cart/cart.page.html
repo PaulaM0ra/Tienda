@@ -1,8 +1,16 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>Carrito</ion-title>
+  <ion-toolbar color="primary">
+
+    <ion-buttons slot="start">
+      <ion-button routerLink="/main/home">
+        <ion-icon name="arrow-back"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-title>🛒 Carrito</ion-title>
+
     <ion-buttons slot="end">
-      <ion-button (click)="clearCart()">
+      <ion-button (click)="clearCart()" color="danger">
         <ion-icon name="trash"></ion-icon>
       </ion-button>
     </ion-buttons>
@@ -11,7 +19,7 @@
 
 <ion-content>
   <ion-list *ngIf="cartItems.length > 0; else emptyCart">
-    <ion-item *ngFor="let item of cartItems">
+    <ion-item *ngFor="let item of cartItems" @fadeIn>
       <ion-thumbnail slot="start">
         <img [src]="item.image" alt="{{ item.name }}" />
       </ion-thumbnail>
@@ -19,25 +27,30 @@
         <h2>{{ item.name }}</h2>
         <p>{{ item.price | currency }} x {{ item.quantity }}</p>
       </ion-label>
-      <ion-button fill="outline" (click)="removeFromCart(item)">
+      <ion-button fill="outline" color="danger" (click)="removeFromCart(item)">
         Quitar
       </ion-button>
     </ion-item>
 
-    <ion-item>
+    <ion-item lines="full">
       <ion-label><strong>Total:</strong></ion-label>
-      <ion-label><strong>{{ getTotalPrice() | currency }}</strong></ion-label>
+      <ion-label class="total-price"><strong>{{ getTotalPrice() | currency }}</strong></ion-label>
     </ion-item>
+
+ 
+    <div class="checkout-container">
+      <ion-button expand="full" color="primary" (click)="checkout()" class="checkout-btn">
+        Finalizar Compra
+      </ion-button>
+    </div>
   </ion-list>
 
   <ng-template #emptyCart>
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>Tu carrito está vacío</ion-card-title>
-      </ion-card-header>
-      <ion-card-content>
-        <p>Agrega productos para continuar con tu compra.</p>
-      </ion-card-content>
-    </ion-card>
+    <div class="empty-cart">
+      <ion-icon name="cart-outline" class="cart-icon"></ion-icon>
+      <h2>Tu carrito está vacío</h2>
+      <p>Agrega productos para continuar con tu compra.</p>
+      <ion-button routerLink="/main/home" color="primary">Volver a la tienda</ion-button>
+    </div>
   </ng-template>
 </ion-content>

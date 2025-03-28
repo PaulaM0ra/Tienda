@@ -1,0 +1,60 @@
+ion-buttons ion-button {
+    --color: white;
+    transition: transform 0.3s ease-in-out, color 0.3s ease-in-out;
+  }
+  
+  ion-buttons ion-button:hover {
+    transform: scale(1.1);
+    --color: #00aaff;
+  }
+  
+  /* ✨ Animación de FadeIn */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  ion-item {
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+ 
+  .total-price {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #007aff;
+  }
+  
+
+  .checkout-container {
+    display: flex;
+    justify-content: center;
+    padding: 10px;
+  }
+  
+  .checkout-btn {
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .checkout-btn:hover {
+    transform: scale(1.05);
+  }
+  
+
+  .empty-cart {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .cart-icon {
+    font-size: 4rem;
+    color: #007aff;
+    animation: fadeIn 0.8s ease-in-out;
+  }
+  
